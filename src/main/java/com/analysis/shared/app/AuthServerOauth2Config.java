@@ -13,19 +13,19 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 @EnableAuthorizationServer
 public class AuthServerOauth2Config extends AuthorizationServerConfigurerAdapter {
 
-	private static final String CLIENT_ID = "store-client";
+	public static final String CLIENT_ID = "store-client";
 
-	private static final String CLIENT_SECRET = "store-secret";
+	public static final String CLIENT_SECRET = "store-secret";
 
-	private static final String GRANT_TYPE = "password";
+	public static final String GRANT_TYPE = "password";
 
-	private static final String AUTHORIZATION_CODE = "authorization_code";
+	public static final String AUTHORIZATION_CODE = "authorization_code";
 
-	private static final String REFRESH_TOKEN = "refresh_token";
+	public static final String REFRESH_TOKEN = "refresh_token";
 
-	private static final String IMPLICIT = "implicit";
+	public static final String IMPLICIT = "implicit";
 
-	private static final String SCOPE_READ = "read";
+	public static final String SCOPE_READ = "read";
 
 	private static final String SCOPE_WRITE = "write";
 
@@ -43,10 +43,15 @@ public class AuthServerOauth2Config extends AuthorizationServerConfigurerAdapter
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient(CLIENT_ID).secret(CLIENT_SECRET)
-				.authorizedGrantTypes(GRANT_TYPE, AUTHORIZATION_CODE, REFRESH_TOKEN, IMPLICIT)
-				.scopes(SCOPE_READ, SCOPE_WRITE, TRUST).accessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY_SECONDS)
-				.refreshTokenValiditySeconds(FREFRESH_TOKEN_VALIDITY_SECONDS);
+		
+		clients.inMemory().withClient(CLIENT_ID).secret(CLIENT_SECRET).authorizedGrantTypes(GRANT_TYPE)
+				.scopes(SCOPE_READ,TRUST).accessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY_SECONDS)
+				.refreshTokenValiditySeconds(FREFRESH_TOKEN_VALIDITY_SECONDS).authorizedGrantTypes(AUTHORIZATION_CODE)
+				.scopes(SCOPE_WRITE).accessTokenValiditySeconds(100).refreshTokenValiditySeconds(200);
+//		clients.inMemory().withClient(CLIENT_ID).secret(CLIENT_SECRET)
+//				.authorizedGrantTypes(GRANT_TYPE, AUTHORIZATION_CODE, REFRESH_TOKEN, IMPLICIT)
+//				.scopes(SCOPE_READ, SCOPE_WRITE, TRUST).accessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY_SECONDS)
+//				.refreshTokenValiditySeconds(FREFRESH_TOKEN_VALIDITY_SECONDS);
 
 //		clients.jdbc(hibernateConfiguration.dataSource()).withClient("sampleClientId").authorizedGrantTypes("implicit")
 //				.scopes("read").autoApprove(true).and().withClient("clientIdPassword").secret("secret")

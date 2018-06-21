@@ -1,7 +1,5 @@
 package com.analysis.shared.app.repo.impl;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;

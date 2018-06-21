@@ -1,6 +1,5 @@
 package com.analysis.shared.app.controller;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +13,7 @@ import com.analysis.shared.app.service.AnalyticsDataService;
 @RestController
 public class AnalyticsRequestHandler {
 	
-	private static final Logger LOGGER = Logger.getLogger(AnalyticsRequestHandler.class);
+//	private static final Logger LOGGER = Logger.getLogger(AnalyticsRequestHandler.class);
 
 	@Autowired
 	private AnalyticsDataService analyticsDataService;
@@ -28,7 +27,7 @@ public class AnalyticsRequestHandler {
 		try {
 			response = analyticsDataService.getUniqueWords(filenames.split(";"));
 		} catch (ReadFileException e) {
-			LOGGER.error("Error occurred : " + e.getMessage());
+//			LOGGER.error("Error occurred : " + e.getMessage());
 			return new ResponseEntity<String>(e.getLocalizedMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(response == null){

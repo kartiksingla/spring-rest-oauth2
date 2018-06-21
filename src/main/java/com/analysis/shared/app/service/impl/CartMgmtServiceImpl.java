@@ -9,8 +9,6 @@ import com.analysis.shared.app.model.Cart;
 import com.analysis.shared.app.model.CartProduct;
 import com.analysis.shared.app.repo.ICartMgmtRepository;
 import com.analysis.shared.app.service.ICartMgmtService;
-import com.analysis.shared.app.service.IEmployeeMgmtService;
-import com.analysis.shared.app.service.IProductMgmtService;
 
 @Service("cartMgmtService")
 public class CartMgmtServiceImpl implements ICartMgmtService {

@@ -14,4 +14,6 @@ public interface AbstractDAO<T> {
 
 	T getById(String id) throws DAOException;
 
+	T getByFields(String fieldName, Object value) throws DAOException;
+
 }
